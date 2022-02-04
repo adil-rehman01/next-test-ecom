@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Admin from '../components/Layouts/admin'
+import Main from '../components/Layouts/main'
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   return (
@@ -9,7 +10,9 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         <Component {...pageProps} />
       </Admin>
     ) : (
-      <Component {...pageProps} />
+      <Main>
+        <Component {...pageProps} />
+      </Main>
     )
   )
 }

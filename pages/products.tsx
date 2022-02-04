@@ -1,6 +1,7 @@
+import { NextPage } from 'next';
 import React from 'react'
 
-const Products = (props: any) => {
+const Products: NextPage = (props: any) => {
     return (
         <div>
             
