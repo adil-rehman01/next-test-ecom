@@ -10,15 +10,24 @@ const SignUp: NextPage = () => {
         }
     }
 
-    const SignUp = (e: Event) => {
-        let form_data = new FormData()
+    const SignUp = async (e: any) => {
+        e.preventDefault();
+        let form_data: any = new FormData()
         form_data.append('first_name', 'Adil')
         form_data.append('last_name', 'Rehman')
         form_data.append('email', 'adilrehman160@gmail.com')
         form_data.append('password', '12341234')
         form_data.append('role', 'User')
         form_data.append('role', 'User')
-        
+        let result = await fetch(`http://127.0.0.1:3000/api/sign-up`, {
+            method: 'POST',
+            body: JSON.stringify(form_data),
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }).then(response => response.json())
+        console.log(result)
     }
 
     return (
@@ -47,7 +56,7 @@ const SignUp: NextPage = () => {
                         </a>
                         </Link>
                     </p>
-                    <form>
+                    <form onSubmit={(e) => SignUp(e)}>
                         <div>
                             <label className="text-sm font-medium leading-none text-gray-800">First Name</label>
                             <input aria-label="enter email adress" role="input" type="text" className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" placeholder='First Name' />
