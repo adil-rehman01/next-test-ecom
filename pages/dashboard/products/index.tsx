@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Index() {
+const Products = () => {
     const [show, setShow]: any = useState(null);
     const popuphandler = (bool: any) => {
 
@@ -25,17 +25,17 @@ function Index() {
                     <div className="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
                         <div className="sm:flex items-center justify-between">
                             <div className="flex items-center">
-                                <a href="javascript:void(0)">
+                                <a href="">
                                     <div className="py-2 px-8 bg-indigo-100 text-indigo-700 rounded-full">
                                         <p>All</p>
                                     </div>
                                 </a>
-                                <a href="javascript:void(0)">
+                                <a href="">
                                     <div className="py-2 px-8 text-gray-600 hover:text-indigo-700 hover:bg-indigo-100 rounded-full ml-4 sm:ml-8">
                                         <p>Done</p>
                                     </div>
                                 </a>
-                                <a href="javascript:void(0)">
+                                <a href="">
                                     <div className="py-2 px-8 text-gray-600 hover:text-indigo-700 hover:bg-indigo-100 rounded-full ml-4 sm:ml-8">
                                         <p>Pending</p>
                                     </div>
@@ -993,4 +993,4 @@ function Index() {
     );
 }
 
-export default Index;
+export default Products;
