@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import React from 'react'
 
 const UsersSchema = new mongoose.Schema({
     first_name: {
@@ -19,13 +18,17 @@ const UsersSchema = new mongoose.Schema({
         required: true,
     },
     role: {
-        type: Number,
-        enum: ['Admin','User'],
+        type: String,
+        enum: ['Admin', 'User'],
         default: 'User'
     },
     status: {
         type: Number,
         default: 0,
+    },
+    remember_token: {
+        type: String,
+        default: null,
     },
     created_time: {
         type: Number,
