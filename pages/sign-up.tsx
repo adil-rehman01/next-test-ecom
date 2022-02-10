@@ -1,9 +1,15 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
+import { APP_URL } from '../helpers/constants';
 
 const SignUp: NextPage = () => {
+
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const styles = {
         loginContent: {
@@ -14,14 +20,14 @@ const SignUp: NextPage = () => {
     const SignUp = async (e: any) => {
         e.preventDefault();
         let form_data: any = {
-            first_name: 'Shehzaad',
-            last_name: 'Cheema',
-            email: 'cheemaustaad@gmail.com',
-            password: '12341234',
+            first_name: firstName,
+            last_name: lastName,
+            email: email,
+            password: password,
             role: 'User',
             status: 1,
         }
-        let result = await fetch(`http://127.0.0.1:3000/api/sign-up`, {
+        let result = await fetch(`${APP_URL}/api/sign-up`, {
             method: 'POST',
             body: JSON.stringify(form_data),
             headers: {
@@ -30,6 +36,13 @@ const SignUp: NextPage = () => {
             }
         }).then(response => response.json())
         console.log(result)
+        if(result.data.errors == undefined)
+        {
+            setFirstName('')
+            setLastName('')
+            setEmail('')
+            setPassword('')
+        }
     }
 
     return (
@@ -65,20 +78,20 @@ const SignUp: NextPage = () => {
                         <form onSubmit={(e) => SignUp(e)}>
                             <div>
                                 <label className="text-sm font-medium leading-none text-gray-800">First Name</label>
-                                <input aria-label="enter email adress" role="input" type="text" className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" placeholder='First Name' />
+                                <input aria-label="enter email adress" role="input" type="text" className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" placeholder='First Name' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                             </div>
                             <div className="mt-6  w-full">
                                 <label className="text-sm font-medium leading-none text-gray-800">Last Name</label>
-                                <input aria-label="enter email adress" role="input" type="text" className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" placeholder='Last Name' />
+                                <input aria-label="enter email adress" role="input" type="text" className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" placeholder='Last Name' value={lastName} onChange={(e) => setLastName(e.target.value)} />
                             </div>
                             <div className="mt-6  w-full">
                                 <label className="text-sm font-medium leading-none text-gray-800">Email</label>
-                                <input aria-label="enter email adress" role="input" type="email" className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" placeholder='Email' />
+                                <input aria-label="enter email adress" role="input" type="email" className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
                             </div>
                             <div className="mt-6  w-full">
                                 <label className="text-sm font-medium leading-none text-gray-800">Password</label>
                                 <div className="relative flex items-center justify-center">
-                                    <input aria-label="enter Password" role="input" type="password" className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" />
+                                    <input aria-label="enter Password" role="input" type="password" className="bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2" value={password} onChange={(e) => setPassword(e.target.value)} />
                                     <div className="absolute right-0 mt-2 mr-3 cursor-pointer">
                                         <svg width={16} height={16} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path

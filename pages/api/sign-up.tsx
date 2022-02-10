@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import InitDB from '../../helpers/initDB';
-import User from '../../models/User';
-
+import InitDB from '../../helpers/initDB'
+import User from '../../models/User'
+import bcrypt from "bcryptjs"
 type Data = {
     data: any
 }
@@ -13,11 +13,12 @@ export default async function handler(
     res: NextApiResponse<Data>
 ) {
     try {
+        let hashedPassword = await bcrypt.hash(req.body.password, 12)
         const user = await new User({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             email: req.body.email,
-            password: req.body.password,
+            password: hashedPassword,
             role: 'User',
             status: 1,
         }).save()
