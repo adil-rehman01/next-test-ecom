@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
-const Navigation = () => {
+const Navigation = (props: any) => {
     const [show, setShow] = useState<any>(null);
     const [profile, setProfile] = useState(false);
     const [product, setProduct] = useState(false);

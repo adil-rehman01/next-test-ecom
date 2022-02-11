@@ -1,7 +1,9 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import Loader from '../components/svg/Loader';
+import { DefaultContext } from '../contexts/DefaultContext';
 import { APP_URL } from '../helpers/constants';
 
 const SignUp: NextPage = () => {
@@ -11,7 +13,12 @@ const SignUp: NextPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const { loading, setLoading }: any = useContext(DefaultContext)
+
     const styles = {
+        wrapperContent: {
+            width: '800px'
+        },
         loginContent: {
             maxWidth: '400px'
         }
@@ -45,6 +52,10 @@ const SignUp: NextPage = () => {
         }
     }
 
+    useEffect(()=> {
+        setLoading(false)
+    },[])
+
     return (
         <>
             <Head>
@@ -53,7 +64,7 @@ const SignUp: NextPage = () => {
             <div className="h-screen bg-gradient-to-tl from-green-400 to-indigo-900 w-full flex justify-center" style={{
                 background: 'linear-gradient(to bottom, #ffff, #312e818a, #312e81)'
             }}>
-                <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col items-center justify-center" style={styles.wrapperContent}>
                     <svg width={188} height={74} viewBox="0 0 188 74" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M21.6477 59.0909C21.6477 52.0384 17.3438 47.8835 11.6229 47.8835C5.89134 47.8835 1.59801 52.0384 1.59801 59.0909C1.59801 66.1328 5.89134 70.2983 11.6229 70.2983C17.3438 70.2983 21.6477 66.1435 21.6477 59.0909ZM17.674 59.0909C17.674 64.0554 15.1811 66.7507 11.6229 66.7507C8.07528 66.7507 5.57173 64.0554 5.57173 59.0909C5.57173 54.1264 8.07528 51.4311 11.6229 51.4311C15.1811 51.4311 17.674 54.1264 17.674 59.0909ZM39.8304 53.6364H35.7289L31.9576 65.7919H31.7871L28.0265 53.6364H23.9142L29.7417 70H34.003L39.8304 53.6364ZM49.0803 70.3196C53.8743 70.3196 56.9212 66.9425 56.9212 61.8821C56.9212 56.8111 53.8743 53.4233 49.0803 53.4233C44.2862 53.4233 41.2393 56.8111 41.2393 61.8821C41.2393 66.9425 44.2862 70.3196 49.0803 70.3196ZM49.1016 67.2301C46.4489 67.2301 45.1491 64.8651 45.1491 61.8714C45.1491 58.8778 46.4489 56.4808 49.1016 56.4808C51.7116 56.4808 53.0114 58.8778 53.0114 61.8714C53.0114 64.8651 51.7116 67.2301 49.1016 67.2301ZM64.051 60.4119C64.051 58.0469 65.4785 56.6832 67.5133 56.6832C69.5055 56.6832 70.6987 57.9936 70.6987 60.1776V70H74.5552V59.581C74.5659 55.6605 72.3287 53.4233 68.9515 53.4233C66.5012 53.4233 64.818 54.5952 64.0723 56.4169H63.8805V53.6364H60.1944V70H64.051V60.4119ZM78.6461 70H82.5985V62.0099H86.6255L90.9082 70H95.3187L90.5993 61.3494C93.1667 60.3161 94.5197 58.1214 94.5197 55.1598C94.5197 50.9943 91.835 48.1818 86.8279 48.1818H78.6461V70ZM82.5985 58.7287V51.4844H86.2207C89.1717 51.4844 90.4927 52.8374 90.4927 55.1598C90.4927 57.4822 89.1717 58.7287 86.242 58.7287H82.5985ZM108.417 63.1179C108.417 65.6108 106.638 66.8466 104.933 66.8466C103.08 66.8466 101.844 65.5362 101.844 63.4588V53.6364H97.9874V64.0554C97.9874 67.9865 100.225 70.2131 103.442 70.2131C105.892 70.2131 107.618 68.924 108.364 67.0916H108.534V70H112.274V53.6364H108.417V63.1179ZM123.484 70.3196C127.298 70.3196 129.918 68.4553 130.6 65.6108L126.999 65.206C126.477 66.5909 125.199 67.3153 123.537 67.3153C121.044 67.3153 119.393 65.6747 119.361 62.8729H130.76V61.6903C130.76 55.9482 127.308 53.4233 123.281 53.4233C118.594 53.4233 115.536 56.8643 115.536 61.9141C115.536 67.049 118.551 70.3196 123.484 70.3196ZM119.371 60.2734C119.489 58.1854 121.033 56.4276 123.335 56.4276C125.55 56.4276 127.042 58.0469 127.063 60.2734H119.371ZM140.095 70.2876C142.907 70.2876 144.175 68.6151 144.782 67.4219H145.017V70H148.809V48.1818H144.942V56.3423H144.782C144.197 55.1598 142.993 53.4233 140.106 53.4233C136.324 53.4233 133.351 56.3849 133.351 61.8395C133.351 67.2301 136.238 70.2876 140.095 70.2876ZM141.171 67.1236C138.625 67.1236 137.282 64.8864 137.282 61.8182C137.282 58.7713 138.604 56.5874 141.171 56.5874C143.653 56.5874 145.017 58.6435 145.017 61.8182C145.017 64.9929 143.632 67.1236 141.171 67.1236ZM160.163 70.3196C163.977 70.3196 166.598 68.4553 167.28 65.6108L163.679 65.206C163.157 66.5909 161.879 67.3153 160.217 67.3153C157.724 67.3153 156.072 65.6747 156.04 62.8729H167.44V61.6903C167.44 55.9482 163.988 53.4233 159.961 53.4233C155.273 53.4233 152.216 56.8643 152.216 61.9141C152.216 67.049 155.231 70.3196 160.163 70.3196ZM156.051 60.2734C156.168 58.1854 157.713 56.4276 160.014 56.4276C162.23 56.4276 163.722 58.0469 163.743 60.2734H156.051ZM174.559 60.4119C174.559 58.0469 175.986 56.6832 178.021 56.6832C180.013 56.6832 181.206 57.9936 181.206 60.1776V70H185.063V59.581C185.074 55.6605 182.836 53.4233 179.459 53.4233C177.009 53.4233 175.326 54.5952 174.58 56.4169H174.388V53.6364H170.702V70H174.559V60.4119Z"
@@ -65,10 +76,10 @@ const SignUp: NextPage = () => {
                         />
                     </svg>
                     <div className="bg-white shadow rounded w-full p-10 mt-16" style={styles.loginContent}>
-                        <p tabIndex={0} role="heading" aria-label="Login to your account" className="text-2xl font-extrabold leading-6 text-gray-800">
+                        <p tabIndex={0} role="heading" aria-label="Login to your account" className="text-2xl font-extrabold leading-6 text-gray-800 text-center">
                             Create your account
                         </p>
-                        <p className="text-sm my-4 font-medium leading-none text-gray-500">
+                        <p className="text-sm my-4 font-medium leading-none text-gray-500 text-center">
                             If you have account?{" "}
                             <Link href={'/sign-in'}>
                             <a tabIndex={0} role="link" aria-label="Sign up here" className="text-sm font-medium leading-none underline text-gray-800 cursor-pointer">
@@ -113,6 +124,11 @@ const SignUp: NextPage = () => {
                     </div>
                 </div>
             </div>
+            {
+                loading == true && (
+                    <Loader />
+                )
+            }
         </>
     );
 };
