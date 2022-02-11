@@ -3,6 +3,8 @@ import Head from "next/head";
 import Link from "next/link";
 import React, { useState } from "react";
 import { APP_URL } from "../helpers/constants";
+import cookie from "js-cookie"
+import { useRouter } from "next/router";
 
 const SignIn: NextPage = () => {
     const [sidebar, setsidebar] = useState();
@@ -14,6 +16,7 @@ const SignIn: NextPage = () => {
             maxWidth: '400px'
         }
     }
+    let route = useRouter()
 
     const login = async (e: any) => {
         e.preventDefault();
@@ -28,7 +31,11 @@ const SignIn: NextPage = () => {
         }).then(response => {
             return response.json()
         })
-        console.log(res)
+        if (res.token != '')
+        {
+            cookie.set('token', res.token)
+            route.push('/dashboard')
+        }
     }
 
     return (

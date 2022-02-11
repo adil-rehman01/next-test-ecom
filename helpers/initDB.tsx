@@ -1,7 +1,8 @@
 import mongoose, { ConnectOptions } from "mongoose";
+import { MONGO_URI } from "./constants";
 
 const InitDB = () => {
-    let mongoUri: any = process.env.MONGO_URI
+    let mongoUri: any = MONGO_URI
 
     mongoose.connect(mongoUri!, {
         useNewUrlParser: true,

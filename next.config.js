@@ -1,4 +1,12 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  reactStrictMode: true,
-}
+  reactStrictMode: false,
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: process.env.APP_URL + ":path*",
+      },
+    ];
+  },
+};
