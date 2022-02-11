@@ -147,7 +147,7 @@ const NavBar = () => {
                 </div>
             </nav>
             {/* for smaller devcies */}
-            <div className="block md:hidden w-full mt-5 ">
+            <div className="block md:hidden w-full mt-5">
                 <div onClick={() => setDropDown(!dropDown)} className="cursor-pointer px-4 py-3 text-white bg-indigo-600 rounded flex justify-between items-center w-full">
                     <div className="flex space-x-2">
                         <span id="s1" className={`${text.length != 0 ? '' : 'hidden'} font-semibold text-sm leading-3`}>Selected: </span><p id="textClicked" className="font-normal text-sm leading-3 focus:outline-none hover:bg-gray-800 duration-100 cursor-pointer ">{text ? text : "Collections"}</p>
