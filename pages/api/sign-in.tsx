@@ -42,7 +42,7 @@ async function handler( req: NextApiRequest, res: NextApiResponse) {
             return res.status(200).json({ token: token })
         }
     } catch (error) {
-        return res.status(200).json({ data: error })
+        return res.status(200).json({ error: error });
     }
 }
 
