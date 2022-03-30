@@ -8,41 +8,34 @@ const AddProduct = () => {
 				<title>Add Product</title>
 			</Head>
 			<div className='sm:px-6 w-full'>
-				<div className='px-4 md:px-10 py-4 md:py-7'>
+				<div className='px-4 py-4 md:py-7'>
 					<div className='flex items-center justify-between'>
 						<p className='text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800'>Add Product</p>
 					</div>
 				</div>
-				<div className='flex md:flex-row flex-col items-center py-8 px-4'>
+				<div className='grid grid-cols-2 gap-4 flex-col items-center py-8 px-4'>
 					{/* Code block starts */}
-					<div className='flex flex-col md:mr-16'>
+					<div className='flex flex-col md:mr-16 w-full'>
 						<label htmlFor='email' className='text-black text-sm font-bold leading-tight tracking-normal mb-2'>
 							Name
 						</label>
-						<input id='name' className='text-gray-600 focus:outline-none focus:border focus:border-indigo-700 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-gray-300 rounded border' placeholder='Placeholder' />
+						<input id='name' className='text-gray-600 focus:outline-none focus:border focus:border-indigo-700 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border w-full' placeholder='Name' />
 					</div>
 					{/* Code block ends */}
 					{/* Code block starts */}
-					<div className='flex flex-col md:mr-16 md:py-0 py-4'>
-						<label htmlFor='last_email' className='text-gray-400 text-sm font-bold leading-tight tracking-normal mb-2'>
-							Email
+					<div className='flex flex-col md:mr-16 w-full'>
+						<label htmlFor='email' className='text-black text-sm font-bold leading-tight tracking-normal mb-2'>
+							Quantity
 						</label>
-						<input
-							disabled
-							id='last_email'
-							className='text-gray-600 dark:text-gray-400 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-700 font-normal w-64 h-10 flex items-center pl-3 text-sm border-gray-300 bg-gray-200 rounded border shadow'
-							placeholder='Placeholder'
-						/>
+						<input id='name' className='text-gray-600 focus:outline-none focus:border focus:border-indigo-700 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border w-full' placeholder='Quantity' />
 					</div>
 					{/* Code block ends */}
 					{/* Code block starts */}
-					<div className='flex flex-col md:py-0 py-4'>
-						<label htmlFor='email1' className='md:pt-4 text-gray-400 text-sm font-bold leading-tight tracking-normal mb-2' />
-						<input
-							id='email1'
-							className='text-gray-600 dark:text-gray-400 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 bg-white font-normal w-64 h-10 flex items-center pl-3 text-sm border-gray-300 rounded border shadow'
-							placeholder='example@example.com'
-						/>
+					<div className='flex flex-col md:mr-16 w-full'>
+						<label htmlFor='email' className='text-black text-sm font-bold leading-tight tracking-normal mb-2'>
+							Name
+						</label>
+						<input id='name' className='text-gray-600 focus:outline-none focus:border focus:border-indigo-700 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border w-full' placeholder='Name' />
 					</div>
 					{/* Code block ends */}
 				</div>
