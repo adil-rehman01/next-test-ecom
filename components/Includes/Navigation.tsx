@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
+import DropLink from '../UI/RightToLeftBoxEffect';
 
 const Navigation = (props: any) => {
 	const [show, setShow] = useState<any>(null);
@@ -249,8 +250,8 @@ const Navigation = (props: any) => {
 										<div className='flex items-center relative' onClick={() => setProfile(!profile)}>
 											<div className='absolute right-0 top-0 mt-16 drop-box'>
 												<ul className={`w-40 border-r rounded shadow origin-top bg-indigo-100 overflow-hidden ${profile ? 'active' : ''}`}>
-													<li className='drop-link relative cursor-pointer text-sm leading-3 tracking-normal text-black focus:outline-none'>
-														<div className='flex items-center p-2'>
+													<li>
+														<DropLink>
 															<svg
 																xmlns='http://www.w3.org/2000/svg'
 																className='icon icon-tabler icon-tabler-user'
@@ -262,40 +263,17 @@ const Navigation = (props: any) => {
 																fill='none'
 																strokeLinecap='round'
 																strokeLinejoin='round'
+																style={{ minWidth: '20px', maxWidth: '20px', minHeight: '20px', maxHeight: '20px' }}
 															>
 																<path stroke='none' d='M0 0h24v24H0z' />
 																<circle cx={12} cy={7} r={4} />
 																<path d='M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2' />
 															</svg>
-
-															<span className='ml-2'>Not my Profile</span>
-														</div>
-														<div className='drop-link-hover-wrapper absolute bg-indigo-700 h-full text-white top-0 overflow-hidden'>
-															<div className='hover-effect-content flex items-center'>
-																<svg
-																	xmlns='http://www.w3.org/2000/svg'
-																	className='icon icon-tabler icon-tabler-user'
-																	width={20}
-																	height={20}
-																	viewBox='0 0 24 24'
-																	strokeWidth='1.5'
-																	stroke='currentColor'
-																	fill='none'
-																	strokeLinecap='round'
-																	strokeLinejoin='round'
-																	style={{ minWidth: '20px', maxWidth: '20px', minHeight: '20px', maxHeight: '20px' }}
-																>
-																	<path stroke='none' d='M0 0h24v24H0z' />
-																	<circle cx={12} cy={7} r={4} />
-																	<path d='M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2' />
-																</svg>
-
-																<span className='ml-2'>Not my Profile</span>
-															</div>
-														</div>
+															<span className='ml-2'>Not a Profit</span>
+														</DropLink>
 													</li>
-													<li className='drop-link relative cursor-pointer text-sm leading-3 tracking-normal text-black focus:outline-none'>
-														<div className='flex items-center p-2'>
+													<li>
+														<DropLink>
 															<svg
 																xmlns='http://www.w3.org/2000/svg'
 																className='icon icon-tabler icon-tabler-help'
@@ -307,6 +285,7 @@ const Navigation = (props: any) => {
 																fill='none'
 																strokeLinecap='round'
 																strokeLinejoin='round'
+																style={{ minWidth: '20px', maxWidth: '20px', minHeight: '20px', maxHeight: '20px' }}
 															>
 																<path stroke='none' d='M0 0h24v24H0z' />
 																<circle cx={12} cy={12} r={9} />
@@ -315,34 +294,10 @@ const Navigation = (props: any) => {
 															</svg>
 
 															<span className='ml-2'>Help Center</span>
-														</div>
-														<div className='drop-link-hover-wrapper absolute bg-indigo-700 h-full text-white top-0 overflow-hidden'>
-															<div className='hover-effect-content flex items-center'>
-																<svg
-																	xmlns='http://www.w3.org/2000/svg'
-																	className='icon icon-tabler icon-tabler-help'
-																	width={20}
-																	height={20}
-																	viewBox='0 0 24 24'
-																	strokeWidth='1.5'
-																	stroke='currentColor'
-																	fill='none'
-																	strokeLinecap='round'
-																	strokeLinejoin='round'
-																	style={{ minWidth: '20px', maxWidth: '20px', minHeight: '20px', maxHeight: '20px' }}
-																>
-																	<path stroke='none' d='M0 0h24v24H0z' />
-																	<circle cx={12} cy={12} r={9} />
-																	<line x1={12} y1={17} x2={12} y2='17.01' />
-																	<path d='M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4' />
-																</svg>
-
-																<span className='ml-2'>Help Center</span>
-															</div>
-														</div>
+														</DropLink>
 													</li>
-													<li className='drop-link relative cursor-pointer text-sm leading-3 tracking-normal text-black focus:outline-none'>
-														<div className='flex items-center p-2'>
+													<li>
+														<DropLink>
 															<svg
 																xmlns='http://www.w3.org/2000/svg'
 																className='icon icon-tabler icon-tabler-settings'
@@ -354,35 +309,14 @@ const Navigation = (props: any) => {
 																fill='none'
 																strokeLinecap='round'
 																strokeLinejoin='round'
+																style={{ minWidth: '20px', maxWidth: '20px', minHeight: '20px', maxHeight: '20px' }}
 															>
 																<path stroke='none' d='M0 0h24v24H0z' />
 																<path d='M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z' />
 																<circle cx={12} cy={12} r={3} />
 															</svg>
 															<span className='ml-2'>Account Settings</span>
-														</div>
-														<div className='drop-link-hover-wrapper absolute bg-indigo-700 h-full text-white top-0 overflow-hidden'>
-															<div className='hover-effect-content flex items-center'>
-																<svg
-																	xmlns='http://www.w3.org/2000/svg'
-																	className='icon icon-tabler icon-tabler-settings'
-																	width={20}
-																	height={20}
-																	viewBox='0 0 24 24'
-																	strokeWidth='1.5'
-																	stroke='currentColor'
-																	fill='none'
-																	strokeLinecap='round'
-																	strokeLinejoin='round'
-																	style={{ minWidth: '20px', maxWidth: '20px', minHeight: '20px', maxHeight: '20px' }}
-																>
-																	<path stroke='none' d='M0 0h24v24H0z' />
-																	<path d='M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z' />
-																	<circle cx={12} cy={12} r={3} />
-																</svg>
-																<span className='ml-2'>Account Settings</span>
-															</div>
-														</div>
+														</DropLink>
 													</li>
 												</ul>
 											</div>
