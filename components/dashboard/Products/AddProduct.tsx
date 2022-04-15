@@ -14,23 +14,29 @@ const AddProduct = () => {
 					</div>
 				</div>
 				<div className='grid grid-cols-2 gap-4 flex-col items-center py-8 px-4'>
-					{/* Code block starts */}
 					<div className='flex flex-col md:mr-16 w-full'>
 						<label htmlFor='email' className='text-black text-sm font-bold leading-tight tracking-normal mb-2'>
 							Name
 						</label>
 						<input id='name' className='text-gray-600 focus:outline-none focus:border focus:border-indigo-700 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border w-full' placeholder='Name' />
 					</div>
-					{/* Code block ends */}
-					{/* Code block starts */}
+
 					<div className='flex flex-col md:mr-16 w-full'>
 						<label htmlFor='email' className='text-black text-sm font-bold leading-tight tracking-normal mb-2'>
 							Quantity
 						</label>
 						<input id='name' className='text-gray-600 focus:outline-none focus:border focus:border-indigo-700 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border w-full' placeholder='Quantity' />
 					</div>
-					{/* Code block ends */}
-					{/* Code block starts */}
+
+					<div className='flex flex-col md:mr-16 w-full'>
+						<label htmlFor='email' className='text-black text-sm font-bold leading-tight tracking-normal mb-2'>
+							Category
+						</label>
+						<select id='name' className='text-gray-600 focus:outline-none focus:border focus:border-indigo-700 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border w-full' placeholder='Quantity'>
+							<option value=''>Select Category</option>
+						</select>
+					</div>
+
 					<div className='flex flex-col md:mr-16 w-full col-span-2'>
 						<label htmlFor='email' className='text-black text-sm font-bold leading-tight tracking-normal mb-2'>
 							Description
@@ -42,6 +48,7 @@ const AddProduct = () => {
 							placeholder='Description . . .'
 						></textarea>
 					</div>
+
 					<div className='flex flex-col md:mr-16 w-full col-span-2'>
 						<label htmlFor='email' className='text-black text-sm font-bold leading-tight tracking-normal mb-2'>
 							Upload Images
@@ -53,7 +60,6 @@ const AddProduct = () => {
 							<input type='file' name='image' id='image' className='hidden' />
 						</label>
 					</div>
-					{/* Code block ends */}
 				</div>
 			</div>
 		</>
