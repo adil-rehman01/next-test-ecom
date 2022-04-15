@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 const AddCategory = () => {
 	const [name, setName] = useState('');
 
-	const submitCategory = (e) => {
+	const submitCategory = (e: any) => {
 		e.preventDefault();
 		const res = fetch(`http://localhost:3000/api/categories/add`, {
 			method: 'POST',
