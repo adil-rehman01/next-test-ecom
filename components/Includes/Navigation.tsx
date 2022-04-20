@@ -240,10 +240,10 @@ const Navigation = (props: any) => {
 								<div className='hidden xl:flex items-center'>
 									<div className='relative md:mr-6 my-2'>
 										<Link href={'/sign-in'}>
-											<a className='link-01 relative overflow-hidden inline-grid bg-indigo-700 focus:outline-none transition duration-150 ease-in-out rounded text-gray-600 px-5 py-2 text-xs mr-3 font-medium'>Login</a>
+											<a className='link-01 relative overflow-hidden inline-grid bg-indigo-500 focus:outline-none transition duration-150 ease-in-out rounded text-gray-600 px-5 py-2 text-xs mr-3 font-medium'>Login</a>
 										</Link>
 										<Link href={'/sign-up'}>
-											<a className='link-01 relative overflow-hidden inline-grid focus:outline-none bg-indigo-700 transition duration-150 ease-in-out rounded text-gray-600 px-5 py-2 text-xs font-medium'>Register</a>
+											<a className='link-01 relative overflow-hidden inline-grid focus:outline-none bg-indigo-500 transition duration-150 ease-in-out rounded text-gray-600 px-5 py-2 text-xs font-medium'>Register</a>
 										</Link>
 									</div>
 									<div className='ml-6 relative'>

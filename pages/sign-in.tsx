@@ -44,7 +44,8 @@ const SignIn: NextPage = () => {
 			cookie.set('token', res.token);
 			route.push('/dashboard');
 		} else {
-			setError(res.error);
+			console.log(res.error);
+			// setError(res.error);
 		}
 	};
 

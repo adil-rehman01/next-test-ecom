@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import Product from '../../../models/Product';
+import Category from '../../../models/Category';
 import InitDB from '../../../helpers/initDB';
 import Cors from 'cors';
 
 InitDB();
 
 const cors = Cors({
-	methods: ['GET', 'HEAD']
+	methods: ['POST']
 });
 
 function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: any) {
@@ -23,10 +23,17 @@ function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: any) {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	await runMiddleware(req, res, cors);
-	// Product.find().then((products) => {
-	// 	res.status(200).json(req.body);
-	// });
-	res.status(200).json(req.body);
+	const { name, status } = req.body;
+	let check = await Category.find({ name: name });
+	if (check.length === 0) {
+		let category = await new Category({
+			name,
+			status
+		}).save();
+		res.status(200).json(category);
+	} else {
+		res.status(200).json({ error: 'Category already exist' });
+	}
 };
 
 export default handler;
