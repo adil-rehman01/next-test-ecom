@@ -1,7 +1,16 @@
 import Head from 'next/head';
-import React from 'react';
+import React, { useState } from 'react';
 
 const AddProduct = () => {
+	let productFormInitialState = {
+		category_id: 0,
+		name: '',
+		quantity: '',
+		category: 0,
+		description: ''
+	};
+	const [productForm, setProductForm] = useState(productFormInitialState);
+
 	return (
 		<>
 			<Head>
@@ -18,22 +27,40 @@ const AddProduct = () => {
 						<label htmlFor='email' className='text-black text-sm font-bold leading-tight tracking-normal mb-2'>
 							Name
 						</label>
-						<input id='name' className='text-gray-600 focus:outline-none focus:border focus:border-indigo-700 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border w-full' placeholder='Name' />
+						<input
+							id='name'
+							className='text-gray-600 focus:outline-none focus:border focus:border-indigo-700 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border w-full'
+							placeholder='Name'
+							value={productForm.name}
+							onChange={(e) => setProductForm({ ...productForm, name: e.target.value })}
+						/>
 					</div>
 
 					<div className='flex flex-col md:mr-16 w-full'>
 						<label htmlFor='email' className='text-black text-sm font-bold leading-tight tracking-normal mb-2'>
 							Quantity
 						</label>
-						<input id='name' className='text-gray-600 focus:outline-none focus:border focus:border-indigo-700 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border w-full' placeholder='Quantity' />
+						<input
+							id='name'
+							className='text-gray-600 focus:outline-none focus:border focus:border-indigo-700 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border w-full'
+							placeholder='Quantity'
+							value={productForm.quantity}
+							onChange={(e) => setProductForm({ ...productForm, quantity: e.target.value })}
+						/>
 					</div>
 
 					<div className='flex flex-col md:mr-16 w-full'>
 						<label htmlFor='email' className='text-black text-sm font-bold leading-tight tracking-normal mb-2'>
 							Category
 						</label>
-						<select id='name' className='text-gray-600 focus:outline-none focus:border focus:border-indigo-700 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border w-full' placeholder='Quantity'>
-							<option value=''>Select Category</option>
+						<select
+							id='name'
+							className='text-gray-600 focus:outline-none focus:border focus:border-indigo-700 bg-white font-normal h-10 flex items-center pl-3 text-sm border-gray-300 rounded border w-full'
+							placeholder='Quantity'
+							value={productForm.category_id}
+							onChange={(e) => setProductForm({ ...productForm, category_id: Number(e.target.value) })}
+						>
+							<option value='0'>Select Category</option>
 						</select>
 					</div>
 
@@ -46,6 +73,8 @@ const AddProduct = () => {
 							rows={10}
 							className='text-gray-600 focus:outline-none focus:border focus:border-indigo-700 bg-white font-normal flex items-center p-3 text-sm border-gray-300 rounded border w-full'
 							placeholder='Description . . .'
+							value={productForm.description}
+							onChange={(e) => setProductForm({ ...productForm, description: e.target.value })}
 						></textarea>
 					</div>
 
