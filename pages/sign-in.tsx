@@ -45,7 +45,6 @@ const SignIn: NextPage = () => {
 			route.push('/dashboard');
 		} else {
 			console.log(res.error);
-			// setError(res.error);
 		}
 	};
 

@@ -1,20 +1,40 @@
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { APP_URL } from '../../../helpers/constants';
 
-const AddCategory = () => {
+const AddCategory = ({ category, setCategory, setCategoriesList }: any) => {
 	const [name, setName] = useState('');
 	const [status, setStatus] = useState('N');
 
-	const submitCategory = (e: any) => {
+	const submitCategory = async (e: any) => {
 		e.preventDefault();
-		const res = fetch(`http://localhost:3000/api/categories/add`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ name: name, status: status })
-		}).then((response) => response.json());
+		if (category._id === undefined) {
+			await fetch(`${APP_URL}/api/categories/add`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ name: name, status: status })
+			}).then((response) => response.json());
+		} else {
+			await fetch(`${APP_URL}/api/categories/update`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ id: category._id, name: name, status: status })
+			}).then((response) => response.json());
+			setCategory({});
+		}
+
+		let categories = await fetch(`${APP_URL}/api/categories`).then((response) => response.json());
+		setCategoriesList(categories);
 	};
+
+	useEffect(() => {
+		setName(category.name !== undefined ? category.name : '');
+		setStatus(category.status !== undefined ? category.status : 'N');
+	}, [category]);
 
 	return (
 		<div className='sm:px-6 w-full'>
@@ -47,7 +67,7 @@ const AddCategory = () => {
 									type='checkbox'
 									name='status'
 									id='status'
-									value={'Y'}
+									value={status}
 									checked={status == 'Y' ? true : false}
 									onChange={() => {
 										status == 'Y' ? setStatus('N') : setStatus('Y');
@@ -59,7 +79,7 @@ const AddCategory = () => {
 					</div>
 				</div>
 				<div className='w-full pt-4'>
-					<button className='bg-indigo-700 text-white px-2 py-1 rounded'>Save</button>
+					<button className='bg-indigo-700 text-white px-2 py-1 rounded'>{category._id === undefined ? 'Save' : 'Update'}</button>
 				</div>
 			</form>
 		</div>

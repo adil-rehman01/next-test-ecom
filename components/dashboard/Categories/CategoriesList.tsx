@@ -1,9 +1,13 @@
-import Head from 'next/head';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const CategoriesList = ({ categories }: any) => {
+const CategoriesList = ({ categories, setCategory }: any) => {
 	const [show, setShow]: any = useState(null);
-	const popuphandler = (bool: any) => {};
+
+	const editCategory = (category: any) => {
+		setCategory(category);
+		setShow(null);
+	};
+
 	return (
 		<>
 			<div className='sm:px-6 w-full'>
@@ -22,7 +26,7 @@ const CategoriesList = ({ categories }: any) => {
 				</div>
 				<div className='bg-white py-4 px-4'>
 					{/* Category Listing */}
-					<div className='overflow-x-auto'>
+					<div className=''>
 						<table className='w-full whitespace-nowrap'>
 							<thead>
 								<tr>
@@ -54,7 +58,7 @@ const CategoriesList = ({ categories }: any) => {
 													<button
 														className='focus:outline-none'
 														onClick={() => {
-															show == null ? setShow(null) : setShow(index);
+															show == null ? setShow(index) : setShow(null);
 														}}
 													>
 														<svg xmlns='http://www.w3.org/2000/svg' width={20} height={20} viewBox='0 0 20 20' fill='none'>
@@ -83,7 +87,7 @@ const CategoriesList = ({ categories }: any) => {
 													</button>
 													{show == index && (
 														<div className='dropdown-content bg-white shadow absolute z-30 left-0 mr-6 '>
-															<div className='text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white'>
+															<div className='text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white' onClick={() => editCategory(category)}>
 																<p>Edit</p>
 															</div>
 															<div className='text-xs w-full hover:bg-indigo-700 py-4 px-4 cursor-pointer hover:text-white'>
